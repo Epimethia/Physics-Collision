@@ -9,25 +9,25 @@
 class Triangle {
 public:
 	void Render(GLuint _Program) {
-		if (canRender == true) {
+		if (isValid == true) {
 			glUseProgram(_Program);
 			glBindVertexArray(VAO);
 			glEnable(GL_BLEND);
 			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-			glDrawArrays(GL_LINE_LOOP, 0, 3);
+			glDrawArrays(GL_TRIANGLES, 0, 3);
 			glBindVertexArray(0);
 		};
 	};
 
 	void ResetPoints() {
 		Points.clear();
-		canRender = false;
+		isValid = false;
 	};
 
 	void Process() {
 		//if there are the required number of floats to make a tri
-		if (Points.size() == 18 && canRender == false) {
-			canRender = true;
+		if (Points.size() == 18 && isValid == false) {
+			isValid = true;
 			std::copy(Points.begin(), Points.end(), verts);
 
 			glGenVertexArrays(1, &VAO);
@@ -62,19 +62,22 @@ public:
 		}
 	};
 
-	void AddPoint(glm::vec2 _Point) {
+	void AddPoint(glm::vec2 _Point, glm::vec3 _Color) {
 		if (Points.size() <= 18) {
 			//adding the three positional points
-			Points.push_back((_Point.x / 300.0f) - 1.0f);	//x
-			Points.push_back(((_Point.y / 300.0f) - 1.0f) * -1.0f);	//y
+			Points.push_back(_Point.x);	//x
+			Points.push_back(_Point.y);	//y
 			Points.push_back(0.0f);							//z
 
-			//adding the color floats (for white)
-			Points.push_back(1.0f);	//r
-			Points.push_back(1.0f);	//g
-			Points.push_back(1.0f);	//b
+			//adding the color floats
+			Points.push_back(_Color.x);	//r
+			Points.push_back(_Color.y);	//g
+			Points.push_back(_Color.z);	//b
 		}
 	};
+
+	std::vector<float>& GetPoints() { return Points; };
+	bool isValid = false;
 
 private:
 	GLuint VBO;
@@ -82,5 +85,4 @@ private:
 
 	std::vector<float> Points;
 	float verts[18];
-	bool canRender = false;
 };

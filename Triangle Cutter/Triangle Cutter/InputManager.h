@@ -51,7 +51,6 @@ public:
 		glutPassiveMotionFunc(MouseMovement);
 
 		if (MouseArray[MOUSE_LEFT] == FIRST_PRESSED) {
-			std::cout << "Left MB Pressed. Pos: " << glm::to_string(MousePos) << "\n";
 			
 			MouseArray[MOUSE_LEFT] = HELD;
 			return true;
