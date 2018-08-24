@@ -34,13 +34,9 @@ public:
 		glutKeyboardFunc(InputManager::NormKeyDown);
 		glutKeyboardUpFunc(InputManager::NormKeyUp);
 
-		if (KeyArray['t'] == FIRST_PRESSED) {
-			KeyArray['t'] = HELD;
-			return 't';
-		}
-		else if (KeyArray['l'] == FIRST_PRESSED) {
-			KeyArray['l'] = HELD;
-			return 'l';
+		if (KeyArray['r'] == FIRST_PRESSED) {
+			KeyArray['r'] = HELD;
+			return 'r';
 		}
 		else return 'm';
 	}

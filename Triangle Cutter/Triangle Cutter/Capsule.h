@@ -114,7 +114,7 @@ public:
 
 		//converting to deg (for the for loops)
 		AngleOffset = ((AngleOffset * (180.0f / 3.1415f)) - 90.0f) / 10.0f;
-
+		radius = glm::length(PointB - PointC);
 		//DRAWS A SEMICIRCLE AROUND POINT A
 		//Top circle
 		for (float i = 18.1f + AngleOffset; i < 36.0f + AngleOffset; i++) {
@@ -182,12 +182,18 @@ public:
 
 		glBindVertexArray(0);
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
-
-
 	};
+
+	void Reset() {
+		PointA = { -300.0f, -300.0f };
+		PointB = { -300.0f, -300.0f };
+		PointC = { -300.0f, -300.0f };
+	}
 
 	glm::vec2 PointA = { -300.0f, -300.0f };
 	glm::vec2 PointB = { -300.0f, -300.0f };
+	glm::vec2 PointC = { -300.0f, -300.0f };
+
 	float radius = 50.0f;
 
 

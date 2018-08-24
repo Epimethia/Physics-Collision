@@ -10,11 +10,14 @@ InputManager* IM = new InputManager;
 GLuint shaderProgram;
 
 Capsule* cap = new Capsule;
+Capsule* cap1 = new Capsule;
+
 int CurrentPoint = 0;
 
 void Render() {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	cap->Render(shaderProgram);
+	cap1->Render(shaderProgram);
 	glutSwapBuffers();
 }
 
@@ -22,24 +25,47 @@ void Update() {
 
 	if (CurrentPoint == 1) {
 		cap->PointB = glm::vec2(IM->GetMousePos());
+		cap->PointC = glm::vec2(IM->GetMousePos());
 	}
 
 	else if (CurrentPoint == 0) {
 		cap->PointA = glm::vec2(IM->GetMousePos());
 		cap->PointB = glm::vec2(IM->GetMousePos());
+		cap->PointC = glm::vec2(IM->GetMousePos());
 	}
-	else {
-		cap->radius = glm::vec2(IM->GetMousePos() - cap->PointA).length();
-		cap->Update();
+	else if (CurrentPoint == 2) {
+		cap->PointC = glm::vec2(IM->GetMousePos());
 	}
 
-	
+	if (CurrentPoint == 4) {
+		cap1->PointB = glm::vec2(IM->GetMousePos());
+		cap1->PointC = glm::vec2(IM->GetMousePos());
+	}
+
+	else if (CurrentPoint == 3) {
+		cap1->PointA = glm::vec2(IM->GetMousePos());
+		cap1->PointB = glm::vec2(IM->GetMousePos());
+		cap1->PointC = glm::vec2(IM->GetMousePos());
+	}
+	else if (CurrentPoint == 5) {
+		cap1->PointC = glm::vec2(IM->GetMousePos());
+	}
+
 	if (IM->ProcessMouse() == true) {
 		CurrentPoint++;
 	}
 
+	char Result = IM->ProcessKeys();
+	if (Result == 'r') {
+		std::cout << "r\n";
+		CurrentPoint = 0;
+		cap->Reset();
+		cap1->Reset();
+	}
+
 
 	cap->Update();
+	cap1->Update();
 	glutPostRedisplay();
 }
 
@@ -54,6 +80,7 @@ void init() {
 	);	
 
 	cap->Init();
+	cap1->Init();
 }
 
 void exit() {
