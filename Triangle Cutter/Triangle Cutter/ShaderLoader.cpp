@@ -44,6 +44,7 @@ GLuint ShaderLoader::CreateShader(GLenum shaderType, std::string
 		std::cout << "ERROR compiling shader: " << shaderName << std::endl << &shader_log[0] << std::endl;
 		return 0;
 	}
+	std::cout << "Created shader\n";
 	return shader;
 }
 
