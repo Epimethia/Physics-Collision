@@ -5,19 +5,34 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Header Files">
+    <Filter Include="Classes and Implementations">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
-    <Filter Include="Resource Files">
+    <Filter Include="Classes and Implementations\Capsule">
+      <UniqueIdentifier>{0f3121fd-8da6-4953-9fa3-89be497fabe4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes and Implementations\Line">
+      <UniqueIdentifier>{bb8bfe20-2c28-4717-a0f0-1309e037de99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes and Implementations\Triangle">
+      <UniqueIdentifier>{51f76cfa-b5c1-4018-b200-e2289b5455f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Source Files\Input Manager">
+    <Filter Include="Engine Files\Input Manager">
       <UniqueIdentifier>{96d11a22-291f-4074-9795-d9ba9931c44d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\ShaderLoader">
+    <Filter Include="Engine Files\ShaderLoader">
       <UniqueIdentifier>{edf08042-5482-4d0b-852e-2db25b2ddf2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes and Implementations\Collision Checker">
+      <UniqueIdentifier>{382aae84-54fb-44ca-a1ad-3afc9fa0eeba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine Files\Text">
+      <UniqueIdentifier>{82d44637-3758-4b6d-80dd-d6a8cdcd9282}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -25,24 +40,42 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ShaderLoader.cpp">
-      <Filter>Source Files\ShaderLoader</Filter>
+      <Filter>Engine Files\ShaderLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="Capsule.cpp">
+      <Filter>Classes and Implementations\Capsule</Filter>
+    </ClCompile>
+    <ClCompile Include="Line.cpp">
+      <Filter>Classes and Implementations\Line</Filter>
+    </ClCompile>
+    <ClCompile Include="Collision Checker.cpp">
+      <Filter>Classes and Implementations\Collision Checker</Filter>
+    </ClCompile>
+    <ClCompile Include="Text.cpp">
+      <Filter>Engine Files\Text</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="InputManager.h">
-      <Filter>Source Files\Input Manager</Filter>
+      <Filter>Engine Files\Input Manager</Filter>
     </ClInclude>
     <ClInclude Include="ShaderLoader.h">
-      <Filter>Source Files\ShaderLoader</Filter>
+      <Filter>Engine Files\ShaderLoader</Filter>
     </ClInclude>
     <ClInclude Include="Capsule.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Triangle.h">
-      <Filter>Header Files</Filter>
+      <Filter>Classes and Implementations\Capsule</Filter>
     </ClInclude>
     <ClInclude Include="Line.h">
-      <Filter>Header Files</Filter>
+      <Filter>Classes and Implementations\Line</Filter>
+    </ClInclude>
+    <ClInclude Include="Triangle.h">
+      <Filter>Classes and Implementations\Triangle</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision Checker.h">
+      <Filter>Classes and Implementations\Collision Checker</Filter>
+    </ClInclude>
+    <ClInclude Include="Text.h">
+      <Filter>Engine Files\Text</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
