@@ -31,9 +31,6 @@
     <Filter Include="Classes and Implementations\Collision Checker">
       <UniqueIdentifier>{382aae84-54fb-44ca-a1ad-3afc9fa0eeba}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine Files\Text">
-      <UniqueIdentifier>{82d44637-3758-4b6d-80dd-d6a8cdcd9282}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp">
@@ -50,9 +47,6 @@
     </ClCompile>
     <ClCompile Include="Collision Checker.cpp">
       <Filter>Classes and Implementations\Collision Checker</Filter>
-    </ClCompile>
-    <ClCompile Include="Text.cpp">
-      <Filter>Engine Files\Text</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -73,9 +67,6 @@
     </ClInclude>
     <ClInclude Include="Collision Checker.h">
       <Filter>Classes and Implementations\Collision Checker</Filter>
-    </ClInclude>
-    <ClInclude Include="Text.h">
-      <Filter>Engine Files\Text</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

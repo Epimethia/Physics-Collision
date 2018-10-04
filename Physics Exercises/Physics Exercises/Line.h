@@ -9,6 +9,7 @@
 class Line {
 public:
 	Line();
+	~Line();
 	void Init();
 	void Render(GLuint _Program);
 
@@ -17,10 +18,7 @@ public:
 	void AddPoint(glm::vec2 _Point);
 
 	void ResetPoints() {
-		Points.clear();
-		for (int i = 0; i < 12; ++i) {
-			verts[i] = 0.0f;
-		}
+		
 	};
 
 	std::vector<float> GetPoints() { return Points; };

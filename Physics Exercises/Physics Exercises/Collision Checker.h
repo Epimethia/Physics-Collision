@@ -10,7 +10,7 @@
 
 class CollisionChecker {
 public: 
-	static Line CheckCollisions(Capsule& _cap0, Capsule& _cap1, Text* _text);
+	static Line CheckCollisions(Capsule& _cap0, Capsule& _cap1);
 private:
 	GLuint VAO;
 	GLuint VBO;

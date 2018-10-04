@@ -4,7 +4,6 @@
 #include "Capsule.h"
 #include "Triangle.h"
 #include "Line.h"
-#include "Text.h"
 
 #include "Collision Checker.h"
 
@@ -16,7 +15,6 @@ Capsule* cap = new Capsule;
 Capsule* cap1 = new Capsule;
 Line* l1 = new Line;
 
-Text* t = new Text;
 
 int CurrentPoint = 0;
 
@@ -60,12 +58,12 @@ void Update() {
 			cap1->PointC = glm::vec2(IM->GetMousePos());
 			break;
 		}
+		case 6: {
+			*l1 = CollisionChecker::CheckCollisions(*cap, *cap1);
+			l1->Init();
+			CurrentPoint++;
+		}
 		default: break;
-	}
-
-	if (CurrentPoint > 5) {
-		*l1 = CollisionChecker::CheckCollisions(*cap, *cap1, t);
-		l1->Init();
 	}
 
 	if (IM->ProcessMouse() == true) {
@@ -78,13 +76,13 @@ void Update() {
 		CurrentPoint = 0;
 		cap->Reset();
 		cap1->Reset();
-		l1->ResetPoints();
+		delete l1;
+		l1 = new Line;
 	}
 
 	cap->Update();
 	cap1->Update();
 	l1->Process();
-	t->Render();
 	glutPostRedisplay();
 }
 
@@ -98,8 +96,6 @@ void init() {
 		const_cast<char*>("Dependencies/shaders/Fragment Shader.fs")
 	);	
 
-	t = new Text("R to Reset", "Dependencies/freetype/arial.ttf", glm::vec2(50.0f, -300.0f), 40);
-	t->SetScale(100000.0f);
 	cap->Init();
 	cap1->Init();
 	l1->Init();

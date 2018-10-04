@@ -4,6 +4,13 @@ Line::Line() {
 
 }
 
+Line::~Line() {
+	for (int i = 0; i < 12; ++i) {
+		verts[i] = 0.0f;
+	}
+	Points.clear();
+}
+
 void Line::Init() {
 	std::copy(Points.begin(), Points.end(), verts);
 

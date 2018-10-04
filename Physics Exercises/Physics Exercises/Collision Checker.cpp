@@ -6,7 +6,7 @@ void Limit(float& _f) {
 	else if (_f < 0.0f) _f = 0.0f;
 }
 
-Line CollisionChecker::CheckCollisions(Capsule& _cap0, Capsule& _cap1, Text* _text) {
+Line CollisionChecker::CheckCollisions(Capsule& _cap0, Capsule& _cap1) {
 	/*This is just simply getting the points and the magnitudes that make up a line.*/
 	/*These are important for the parametric line equations							*/
 
