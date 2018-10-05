@@ -15,10 +15,16 @@ public:
 
 	void Process();
 
-	void AddPoint(glm::vec2 _Point);
+	void AddPoint(glm::vec2 _Point, glm::vec3 _Color);
 
 	void ResetPoints() {
-		
+		for (int i = 0; i < 12; ++i) {
+			verts[i] = 0.0f;
+		}
+		Points.clear();
+		AddPoint(glm::vec2(-300.0f, -300.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		AddPoint(glm::vec2(-300.0f, -300.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		Init();
 	};
 
 	std::vector<float> GetPoints() { return Points; };

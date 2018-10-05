@@ -11,57 +11,72 @@ ShaderLoader* SL = new ShaderLoader;
 InputManager* IM = new InputManager;
 GLuint shaderProgram;
 
-Capsule* cap = new Capsule;
-Capsule* cap1 = new Capsule;
+Triangle* Triangle0 = new Triangle;
+glm::vec2 Point0;
+Line* l0 = new Line;
 Line* l1 = new Line;
+Line* l2 = new Line;
 
 
 int CurrentPoint = 0;
 
 void Render() {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	cap->Render(shaderProgram);
-	cap1->Render(shaderProgram);
+	Triangle0->Render(shaderProgram);
+	l0->Render(shaderProgram);
 	l1->Render(shaderProgram);
+	l2->Render(shaderProgram);
 	glutSwapBuffers();
 }
 
 void Update() {
 	switch (CurrentPoint) {
 		case 0: {
-			cap->PointA = glm::vec2(IM->GetMousePos());
-			cap->PointB = glm::vec2(IM->GetMousePos());
-			cap->PointC = glm::vec2(IM->GetMousePos());
+			Triangle0->PointA = IM->GetMousePos();
+			Triangle0->PointB = IM->GetMousePos();
+			Triangle0->PointC = IM->GetMousePos();
 			break;
 		}
 		case 1: {
-			cap->PointB = glm::vec2(IM->GetMousePos());
-			cap->PointC = glm::vec2(IM->GetMousePos());
+			Triangle0->PointB = IM->GetMousePos();
+			Triangle0->PointC = IM->GetMousePos();
 			break;
 		}
 		case 2: {
-			cap->PointC = glm::vec2(IM->GetMousePos());
-			break;
-		}
-		case 3: {
-			cap1->PointA = glm::vec2(IM->GetMousePos());
-			cap1->PointB = glm::vec2(IM->GetMousePos());
-			cap1->PointC = glm::vec2(IM->GetMousePos());
+			Triangle0->PointC = IM->GetMousePos();
 			break;
 		}
 		case 4: {
-			cap1->PointB = glm::vec2(IM->GetMousePos());
-			cap1->PointC = glm::vec2(IM->GetMousePos());
-			break;
-		}
-		case 5: {
-			cap1->PointC = glm::vec2(IM->GetMousePos());
-			break;
-		}
-		case 6: {
-			*l1 = CollisionChecker::CheckCollisions(*cap, *cap1);
-			l1->Init();
+			Point0 = IM->GetMousePos();
+			if (CollisionChecker::CheckCollisions(Point0, *Triangle0)) {
+				delete l0; l0 = new Line;
+				l0->AddPoint(Point0, glm::vec3(0.0f, 1.0f, 0.0f)); l0->AddPoint(Triangle0->PointA, glm::vec3(0.0f, 1.0f, 0.0f));
+				l0->Init();
+				delete l1; l1 = new Line;
+
+				l1->AddPoint(Point0, glm::vec3(0.0f, 1.0f, 0.0f)); l1->AddPoint(Triangle0->PointB, glm::vec3(0.0f, 1.0f, 0.0f));
+				l1->Init();
+				delete l2; l2 = new Line;
+
+				l2->AddPoint(Point0, glm::vec3(0.0f, 1.0f, 0.0f)); l2->AddPoint(Triangle0->PointC, glm::vec3(0.0f, 1.0f, 0.0f));
+				l2->Init();
+			}
+			else {
+				delete l0; l0 = new Line;
+				l0->AddPoint(Point0, glm::vec3(1.0f, 0.0f, 0.0f)); l0->AddPoint(Triangle0->PointA, glm::vec3(1.0f, 0.0f, 0.0f));
+				l0->Init();
+				delete l1; l1 = new Line;
+
+				l1->AddPoint(Point0, glm::vec3(1.0f, 0.0f, 0.0f)); l1->AddPoint(Triangle0->PointB, glm::vec3(1.0f, 0.0f, 0.0f));
+				l1->Init();
+				delete l2; l2 = new Line;
+
+				l2->AddPoint(Point0, glm::vec3(1.0f, 0.0f, 0.0f)); l2->AddPoint(Triangle0->PointC, glm::vec3(1.0f, 0.0f, 0.0f));
+				l2->Init();
+			}
+			
 			CurrentPoint++;
+			break;
 		}
 		default: break;
 	}
@@ -74,15 +89,11 @@ void Update() {
 
 	if (Result == 'r') {
 		CurrentPoint = 0;
-		cap->Reset();
-		cap1->Reset();
-		delete l1;
-		l1 = new Line;
+		delete l0; l0 = new Line;
+		delete l1; l1 = new Line;
+		delete l2; l2 = new Line;
 	}
-
-	cap->Update();
-	cap1->Update();
-	l1->Process();
+	Triangle0->Update();
 	glutPostRedisplay();
 }
 
@@ -95,18 +106,17 @@ void init() {
 		const_cast<char*>("Dependencies/shaders/Vertex Shader.vs"),
 		const_cast<char*>("Dependencies/shaders/Fragment Shader.fs")
 	);	
-
-	cap->Init();
-	cap1->Init();
+	Triangle0->Init();
+	l0->Init();
 	l1->Init();
+	l2->Init();
 }
 
 void exit() {
 	delete SL; SL = nullptr;
 	delete IM; IM = nullptr;
 	shaderProgram = 0;
-	delete cap; cap = nullptr;
-	delete cap1; cap1 = nullptr;
+	delete Triangle0; Triangle0 = nullptr;
 }
 
 

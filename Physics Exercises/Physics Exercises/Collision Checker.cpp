@@ -85,8 +85,20 @@ Line CollisionChecker::CheckCollisions(Capsule& _cap0, Capsule& _cap1) {
 	if (!(glm::length(B - A) <= (_cap0.radius + _cap1.radius))) {
 		A = A - (glm::normalize(A - B) * _cap0.radius);
 		B = B - (glm::normalize(B - A) * _cap1.radius);
-		l.AddPoint(A);
-		l.AddPoint(B);
+		l.AddPoint(A, glm::vec3(0.0f, 1.0f, 0.0f));
+		l.AddPoint(B, glm::vec3(0.0f, 1.0f, 0.0f));
 	}
 	return l;
+}
+
+bool CollisionChecker::CheckCollisions(glm::vec2 _Point, Triangle _tri)
+{
+	float a = glm::acos(glm::dot(glm::normalize(_tri.PointA - _Point), glm::normalize(_tri.PointB - _Point)));
+	float b = glm::acos(glm::dot(glm::normalize(_tri.PointB - _Point), glm::normalize(_tri.PointC - _Point)));
+	float c = glm::acos(glm::dot(glm::normalize(_tri.PointC - _Point), glm::normalize(_tri.PointA - _Point)));
+
+	if (glm::degrees(a + b + c) == 360.0f) {
+		return true;
+	}
+	return false;
 }

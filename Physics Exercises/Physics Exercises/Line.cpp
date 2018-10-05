@@ -57,16 +57,16 @@ void Line::Process() {
 	
 }
 
-void Line::AddPoint(glm::vec2 _Point) {
+void Line::AddPoint(glm::vec2 _Point, glm::vec3 _Color) {
 	if (Points.size() <= 12) {
 		//adding the three positional points
 		Points.push_back(_Point.x);	//x
 		Points.push_back(_Point.y);	//y
 		Points.push_back(0.0f);							//z
 														//adding the color floats (for white)
-		Points.push_back(1.0f);	//r
-		Points.push_back(0.0f);	//g
-		Points.push_back(0.0f);	//b
+		Points.push_back(_Color.x);	//r
+		Points.push_back(_Color.y);	//g
+		Points.push_back(_Color.z);	//b
 	}
 }
 
