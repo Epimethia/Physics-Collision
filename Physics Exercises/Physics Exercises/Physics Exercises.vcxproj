@@ -131,6 +131,7 @@
     <ClCompile Include="Capsule.cpp" />
     <ClCompile Include="Collision Checker.cpp" />
     <ClCompile Include="Line.cpp" />
+    <ClCompile Include="QuadMesh.cpp" />
     <ClCompile Include="ShaderLoader.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
@@ -139,6 +140,7 @@
     <ClInclude Include="Collision Checker.h" />
     <ClInclude Include="Line.h" />
     <ClInclude Include="InputManager.h" />
+    <ClInclude Include="QuadMesh.h" />
     <ClInclude Include="ShaderLoader.h" />
     <ClInclude Include="Triangle.h" />
   </ItemGroup>

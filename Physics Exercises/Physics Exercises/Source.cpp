@@ -4,6 +4,7 @@
 #include "Capsule.h"
 #include "Triangle.h"
 #include "Line.h"
+#include "QuadMesh.h"
 
 #include "Collision Checker.h"
 
@@ -17,6 +18,8 @@ Line* l0 = new Line;
 Line* l1 = new Line;
 Line* l2 = new Line;
 
+QuadMesh* qm = new QuadMesh;
+
 
 int CurrentPoint = 0;
 
@@ -26,6 +29,7 @@ void Render() {
 	l0->Render(shaderProgram);
 	l1->Render(shaderProgram);
 	l2->Render(shaderProgram);
+	qm->Render(shaderProgram);
 	glutSwapBuffers();
 }
 
@@ -95,6 +99,7 @@ void Update() {
 	}
 	Triangle0->Update();
 	glutPostRedisplay();
+	std::cout << glm::to_string(IM->GetMousePos()) << std::endl;
 }
 
 void init() {
@@ -110,6 +115,7 @@ void init() {
 	l0->Init();
 	l1->Init();
 	l2->Init();
+	qm->Init();
 }
 
 void exit() {

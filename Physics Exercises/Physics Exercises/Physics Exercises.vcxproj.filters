@@ -31,6 +31,9 @@
     <Filter Include="Classes and Implementations\Collision Checker">
       <UniqueIdentifier>{382aae84-54fb-44ca-a1ad-3afc9fa0eeba}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes and Implementations\QuadMesh">
+      <UniqueIdentifier>{649a147e-5287-40dc-8996-c8ba67fd7ca0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp">
@@ -47,6 +50,9 @@
     </ClCompile>
     <ClCompile Include="Collision Checker.cpp">
       <Filter>Classes and Implementations\Collision Checker</Filter>
+    </ClCompile>
+    <ClCompile Include="QuadMesh.cpp">
+      <Filter>Classes and Implementations\QuadMesh</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -67,6 +73,9 @@
     </ClInclude>
     <ClInclude Include="Collision Checker.h">
       <Filter>Classes and Implementations\Collision Checker</Filter>
+    </ClInclude>
+    <ClInclude Include="QuadMesh.h">
+      <Filter>Classes and Implementations\QuadMesh</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
